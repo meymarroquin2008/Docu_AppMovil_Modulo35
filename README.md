@@ -38,7 +38,7 @@ La documentación técnica del proyecto se encuentra organizada en la carpeta `d
 * [Instalación móvil](docs/instalacion_movil.md)
 * [API y servicios](docs/api_endpoints.md)
 * [Manual de usuario](docs/manual_usuario.md)
-* [Seguridad](docs/seguridad.md)
+* [Políticas de Seguridad](docs/seguridad.md)
 
 ## Diagramas
 
