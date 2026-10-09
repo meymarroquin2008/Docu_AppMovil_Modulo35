@@ -71,7 +71,7 @@ El video muestra el proceso de navegación por UniRoute, la exploración de las 
 
 **Video tutorial de UniRoute:**
 
-[Ver video tutorial de UniRoute](videos/videotutorial_proyecto.mp4.mp4)
+[Ver video tutorial de UniRoute](videos/videotutorial_proyecto.mp4)
 
 ---
 
