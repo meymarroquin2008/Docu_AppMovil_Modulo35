@@ -12,12 +12,14 @@ Mostrar el funcionamiento de UniRoute y orientar al usuario durante la navegaci�
 
 ## Reproducción del videotutorial
 
-A continuación, puedes abrir el video para observar la navegación y el uso de la aplicación UniRoute.
+Puedes reproducir el videotutorial de UniRoute desde el siguiente reproductor. Si no funciona en tu navegador, utiliza el enlace para abrir el archivo de video.
 
 <video controls width="100%">
   <source src="videotutorial_proyecto.mp4" type="video/mp4">
-  Tu navegador no puede reproducir este video.
+  Tu navegador no admite la reproducción de este video.
 </video>
+
+[**Abrir o descargar el videotutorial de UniRoute**](videotutorial_proyecto.mp4)
 
 ## Elementos de la guía visual
 
