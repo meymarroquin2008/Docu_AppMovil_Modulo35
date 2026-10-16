@@ -2,194 +2,185 @@
 
 ## 1. Descripción
 
-PixelVault Store es una aplicación móvil desarrollada con **React Native y JavaScript**, utilizando **Expo** como entorno para facilitar su ejecución y pruebas. La aplicación simula una tienda digital de videojuegos y utiliza **AsyncStorage** para guardar información localmente en el dispositivo.
+**UniRoute** es un proyecto orientado a facilitar la consulta de rutas y la navegación de los usuarios. Esta guía describe los requisitos generales, el procedimiento de instalación y las pruebas necesarias para comprobar el funcionamiento de la aplicación.
 
-La aplicación permite registrarse, iniciar sesión, consultar el catálogo de videojuegos, filtrar por categorías, consultar los detalles de los juegos, agregar productos al carrito, realizar un pago simulado y consultar el historial de compras.
+El procedimiento específico depende de las tecnologías y herramientas utilizadas en el desarrollo de UniRoute. Por ello, antes de ejecutar los comandos de instalación, se debe identificar el entorno configurado en el proyecto.
 
----
-
-## 2. Requisitos del Dispositivo / Entorno
-
-Para ejecutar y probar PixelVault Store se necesitan los siguientes requisitos:
+## 2. Requisitos del dispositivo y del entorno
 
 ### Dispositivo móvil
 
-* Dispositivo Android o iOS compatible con la aplicación.
-* Espacio suficiente para instalar y ejecutar la aplicación.
-* Conexión a Internet o Wi-Fi cuando sea necesaria para el entorno de desarrollo y pruebas.
-* Permisos necesarios para instalar y ejecutar la aplicación.
+- Un dispositivo compatible con la aplicación, si se ejecuta en un teléfono móvil.
+- Espacio de almacenamiento disponible.
+- Conexión a Internet cuando sea necesaria para descargar dependencias o consultar servicios externos.
+- Permisos requeridos por la aplicación, de acuerdo con las funciones implementadas.
 
 ### Entorno de desarrollo
 
-* **React Native:** utilizado para desarrollar la interfaz de la aplicación.
-* **JavaScript:** utilizado para programar la lógica y funcionamiento de PixelVault.
-* **Expo:** utilizado como entorno para ejecutar y realizar pruebas de la aplicación.
-* **AsyncStorage:** utilizado para almacenar información localmente en el dispositivo.
+Para instalar y ejecutar UniRoute, se deben verificar los siguientes elementos según la configuración real del proyecto:
 
-### Información almacenada localmente
+- **Código fuente:** archivos de la aplicación y sus recursos.
+- **Entorno de desarrollo:** editor o herramienta utilizada para trabajar con el proyecto.
+- **Dependencias:** bibliotecas y paquetes necesarios para ejecutar la aplicación.
+- **Herramientas de ejecución:** emulador, dispositivo físico o servidor de desarrollo, según corresponda.
+- **Configuración:** archivos y variables requeridos por la aplicación.
 
-PixelVault utiliza las siguientes claves de AsyncStorage:
+> **Nota:** No se deben instalar herramientas o bibliotecas adicionales sin comprobar primero cuáles utiliza UniRoute.
 
-* `@pixelvault_sesion` — Guarda la sesión actual.
-* `@pixelvault_usuarios` — Guarda los usuarios registrados.
-* `@pixelvault_compras` — Guarda las compras realizadas.
+## 3. Procedimiento de instalación y ejecución
 
----
+### Paso 1. Obtener el proyecto
 
-## 3. Procedimiento de Instalación y Ejecución
+1. Acceder al repositorio o ubicación donde se encuentra el código fuente de UniRoute.
+2. Descargar el proyecto o abrirlo mediante la herramienta de desarrollo utilizada.
+3. Comprobar que los archivos y carpetas necesarios estén disponibles.
 
-### Opción 1: Ejecución mediante Expo
+### Paso 2. Revisar la configuración
 
-1. Tener disponible el proyecto de PixelVault Store en el entorno de desarrollo.
-2. Abrir el proyecto utilizando el entorno configurado para trabajar con React Native y Expo.
-3. Iniciar el proyecto mediante Expo.
-4. Utilizar un dispositivo móvil compatible o un emulador para realizar las pruebas.
-5. Abrir la aplicación PixelVault Store.
-6. Verificar que aparezca correctamente la pantalla de inicio de sesión o la pantalla principal si existe una sesión guardada.
+1. Identificar los archivos de configuración del proyecto.
+2. Consultar las instrucciones de instalación incluidas en el repositorio, si existen.
+3. Verificar qué dependencias y herramientas necesita la aplicación.
+4. Comprobar si se requieren variables de entorno o servicios adicionales.
 
-Expo facilita el desarrollo y las pruebas de la aplicación móvil.
+### Paso 3. Instalar las dependencias
 
----
+Instalar las dependencias siguiendo las instrucciones correspondientes al lenguaje, framework o plataforma que utiliza UniRoute.
 
-## 4. Configuración Inicial
+No se deben ejecutar comandos de instalación de React Native, Expo u otras tecnologías sin confirmar que forman parte del proyecto.
 
-Al iniciar la aplicación, PixelVault ejecuta un proceso de carga de información almacenada previamente.
+### Paso 4. Ejecutar la aplicación
 
-La aplicación utiliza:
+1. Iniciar la aplicación utilizando el procedimiento definido para el proyecto.
+2. Si corresponde, abrirla en un emulador o dispositivo móvil compatible.
+3. Esperar a que finalice el proceso de carga.
+4. Comprobar que la pantalla inicial se muestre correctamente.
+5. Revisar los mensajes de error que puedan aparecer durante la ejecución.
 
-```javascript
-useEffect(() => {
-  cargarDatosGuardados();
-}, []);
-```
+### Paso 5. Verificar el funcionamiento
 
-Este proceso permite recuperar información guardada mediante AsyncStorage, como:
+Una vez iniciada la aplicación, realizar las pruebas descritas en la sección 5 de esta guía.
 
-* Usuarios registrados.
-* Compras anteriores.
-* Sesión activa.
+## 4. Configuración inicial
 
-Si existe una sesión válida, la aplicación puede restaurarla y permitir el acceso nuevamente sin que el usuario tenga que iniciar sesión.
+Al iniciar UniRoute, se debe comprobar que la aplicación cargue correctamente sus componentes y recursos.
 
----
+Durante esta revisión, se recomienda verificar:
 
-## 5. Prueba de Funcionamiento
+- La visualización de la pantalla inicial.
+- La disponibilidad de las opciones de navegación.
+- El funcionamiento de los formularios o campos de entrada que existan.
+- La selección del punto de origen y del destino, si estas funciones están implementadas.
+- La consulta y visualización de rutas, de acuerdo con las capacidades reales del proyecto.
+- La conexión con los servicios externos que sean necesarios, si corresponde.
 
-Después de ejecutar la aplicación, se recomienda comprobar las principales funciones:
+La recuperación de sesiones, el almacenamiento local y la carga automática de información solo deben documentarse como funciones disponibles cuando hayan sido verificadas en el código de UniRoute.
 
-1. Abrir PixelVault Store.
-2. Crear una cuenta utilizando los datos solicitados.
-3. Iniciar sesión con las credenciales registradas.
-4. Comprobar que se muestre el catálogo de videojuegos.
-5. Seleccionar una categoría.
-6. Consultar los detalles de un videojuego.
-7. Agregar un videojuego al carrito.
-8. Comprobar que el total se calcule automáticamente.
-9. Realizar el proceso de pago simulado.
-10. Verificar que se genere el número de transacción.
-11. Consultar el historial de compras.
-12. Cerrar sesión.
-13. Volver a iniciar la aplicación y comprobar la recuperación de los datos almacenados.
+## 5. Prueba de funcionamiento
 
----
+Después de ejecutar la aplicación, se recomienda realizar las siguientes comprobaciones:
 
-## 6. Consideraciones sobre el Almacenamiento
+1. Abrir UniRoute.
+2. Verificar que la pantalla inicial se muestre correctamente.
+3. Revisar las opciones disponibles en el menú o interfaz.
+4. Comprobar que los elementos de navegación respondan a las acciones del usuario.
+5. Seleccionar un punto de origen, si la función está disponible.
+6. Seleccionar un destino, si la función está disponible.
+7. Consultar una ruta utilizando las opciones implementadas.
+8. Verificar que los resultados se presenten correctamente.
+9. Comprobar el comportamiento de los botones, formularios y mensajes informativos.
+10. Revisar el funcionamiento de la aplicación ante datos incorrectos o campos vacíos.
+11. Cerrar y volver a abrir la aplicación para comprobar su comportamiento.
+12. Registrar los errores encontrados para facilitar su corrección.
 
-PixelVault utiliza almacenamiento local mediante AsyncStorage. Esto permite conservar información después de cerrar la aplicación.
+Las pruebas deben adaptarse a las funciones que realmente estén disponibles en la versión actual de UniRoute.
 
-Los principales datos almacenados son:
+## 6. Configuración y almacenamiento de datos
 
-| Información          | Clave                  |
-| -------------------- | ---------------------- |
-| Sesión actual        | `@pixelvault_sesion`   |
-| Usuarios registrados | `@pixelvault_usuarios` |
-| Compras realizadas   | `@pixelvault_compras`  |
+El almacenamiento de información depende de la arquitectura implementada en UniRoute.
 
-El funcionamiento de la aplicación depende de que estas claves se mantengan correctamente configuradas.
+Para documentarlo correctamente, se debe verificar si el proyecto utiliza almacenamiento local, una base de datos, servicios web u otro mecanismo.
 
----
+Durante la revisión, comprobar:
 
-## 7. Solución de Problemas Básicos
+- Qué información se guarda y dónde.
+- Cómo se recuperan los datos necesarios.
+- Si existen archivos de configuración o variables de entorno.
+- Qué servicios externos necesita la aplicación.
+- Qué información se conserva al cerrar la aplicación.
 
-### La sesión no se mantiene
+No se deben agregar nombres de claves de almacenamiento, tablas, bases de datos o servicios que no hayan sido identificados en el código fuente.
 
-Verificar que AsyncStorage esté correctamente configurado y que la clave:
+## 7. Solución de problemas básicos
 
-```text
-@pixelvault_sesion
-```
+### La aplicación no inicia
 
-se encuentre correctamente utilizada en el código.
+- Verificar que se hayan seguido las instrucciones de instalación.
+- Comprobar que las dependencias estén instaladas.
+- Revisar los mensajes de error de la herramienta de desarrollo.
+- Confirmar que la configuración del proyecto sea correcta.
 
-### Los usuarios registrados no aparecen
+### La pantalla inicial no se muestra correctamente
 
-Verificar la clave:
+- Revisar los componentes y recursos utilizados por la pantalla.
+- Comprobar las rutas de los archivos y las importaciones.
+- Verificar que no existan errores durante la carga de la aplicación.
 
-```text
-@pixelvault_usuarios
-```
+### Las opciones de navegación no funcionan
 
-y comprobar que los datos estén siendo guardados y recuperados correctamente mediante AsyncStorage.
+- Comprobar que los botones y enlaces estén conectados a sus acciones correspondientes.
+- Revisar la configuración de navegación.
+- Verificar que no existan errores en la lógica de los componentes.
 
-### El historial de compras no aparece
+### No se muestran los resultados de una ruta
 
-Verificar la clave:
-
-```text
-@pixelvault_compras
-```
-
-y comprobar que las compras hayan sido guardadas correctamente.
+- Comprobar que los datos de origen y destino sean válidos.
+- Verificar que la función de consulta esté implementada correctamente.
+- Revisar la conexión a Internet si la consulta depende de un servicio externo.
+- Consultar los mensajes de error para identificar la causa del problema.
 
 ### La aplicación presenta errores después de modificar el código
 
-Se deben revisar las importaciones, los estados utilizados por los componentes y la configuración de AsyncStorage, ya que estos elementos son necesarios para el funcionamiento de PixelVault.
+- Revisar los cambios realizados.
+- Comprobar las importaciones y dependencias.
+- Verificar la sintaxis del código.
+- Ejecutar nuevamente las pruebas después de corregir los errores.
 
----
+## 8. Consideraciones de seguridad
 
-## 8. Limitaciones de la Versión Actual
+Durante la instalación y las pruebas de UniRoute, se recomienda:
 
-PixelVault es un proyecto académico que utiliza almacenamiento local mediante AsyncStorage.
+- No compartir contraseñas, claves privadas ni credenciales.
+- No publicar variables de entorno que contengan información confidencial.
+- Utilizar datos de prueba cuando sea posible.
+- Verificar los permisos solicitados por la aplicación.
+- Comprobar que la información enviada a servicios externos se gestione de manera adecuada.
+- Evitar afirmar que los datos están cifrados o protegidos mediante mecanismos específicos sin comprobar su implementación.
 
-Actualmente:
+## 9. Recomendaciones para las pruebas
 
-* Las cuentas se almacenan localmente.
-* Las contraseñas no utilizan un sistema de cifrado o hashing de servidor.
-* El proceso de pago es únicamente una simulación.
-* No existe conexión con un banco o una plataforma de pagos real.
-* No se deben utilizar datos reales de tarjetas durante las pruebas.
+Para obtener resultados confiables, se recomienda:
 
-Por lo tanto, la aplicación está diseñada principalmente para fines académicos y de demostración.
+- Seguir el procedimiento de instalación correspondiente al proyecto.
+- Utilizar una versión compatible de las herramientas requeridas.
+- Probar la aplicación en los dispositivos o entornos disponibles.
+- Verificar la navegación entre las pantallas.
+- Comprobar las funciones principales relacionadas con la consulta de rutas.
+- Registrar los errores y las condiciones en las que aparecen.
+- Repetir las pruebas después de realizar modificaciones.
+- Mantener actualizadas las instrucciones de instalación cuando cambie la configuración del proyecto.
 
----
+## 10. Resumen de requisitos
 
-## 9. Recomendaciones para las Pruebas
+| Requisito | Estado |
+|---|---|
+| Código fuente de UniRoute | Necesario |
+| Entorno de desarrollo compatible | Según la tecnología utilizada |
+| Dependencias del proyecto | Según la configuración |
+| Dispositivo o emulador | Si corresponde a la plataforma |
+| Conexión a Internet | Cuando sea necesaria |
+| Servicios externos | Según la implementación |
+| Base de datos | Por verificar |
+| Almacenamiento local | Por verificar |
+| Sistema de autenticación | Por verificar |
 
-Durante las pruebas de PixelVault se recomienda:
-
-* Utilizar datos de prueba.
-* No introducir información bancaria real.
-* Comprobar que los formularios validen correctamente la información.
-* Verificar el funcionamiento del registro e inicio de sesión.
-* Comprobar el carrito y el cálculo automático del total.
-* Confirmar que las compras aparezcan en el historial.
-* Verificar que la sesión pueda mantenerse después de cerrar y volver a abrir la aplicación.
-
----
-
-## 10. Resumen de Requisitos
-
-| Requisito                | Utilizado en PixelVault |
-| ------------------------ | ----------------------- |
-| React Native             | Sí                      |
-| JavaScript               | Sí                      |
-| Expo                     | Sí                      |
-| AsyncStorage             | Sí                      |
-| Almacenamiento local     | Sí                      |
-| API REST externa         | No                      |
-| Servidor Backend         | No                      |
-| Base de datos en la nube | No                      |
-| Pago real                | No                      |
-| Pago simulado            | Sí                      |
-
-PixelVault Store puede ejecutarse y probarse utilizando el entorno de **React Native y Expo**, utilizando **AsyncStorage** para conservar los datos localmente en el dispositivo.
+**Conclusión:** La instalación de UniRoute debe realizarse siguiendo las herramientas y dependencias definidas en su código fuente. Antes de publicar esta guía como documentación definitiva, se deben comprobar los requisitos técnicos y ajustar los pasos a la versión real de la aplicación.

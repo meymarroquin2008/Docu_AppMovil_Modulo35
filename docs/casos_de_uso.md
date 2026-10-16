@@ -1,197 +1,122 @@
-# Diagrama de Casos de Uso - PixelVault Store
+# Diagrama de Casos de Uso - UniRoute
 
 ## 1. Representación Visual
+
 ![Diagrama de Casos de Uso](assets/diagrama_casos_uso.png)
 
+El diagrama de casos de uso permite representar las interacciones entre los usuarios y las funcionalidades disponibles en UniRoute.
+
+**Nota:** verifica que la imagen `assets/diagrama_casos_uso.png` corresponda realmente a UniRoute. Si todavía contiene elementos de PixelVault, será necesario actualizarla para que coincida con el proyecto.
+
 ## 2. Descripción de Actores y Flujos
+
 ### Actores
 
-#### Usuario Cliente
-Es el usuario principal de PixelVault. Interactúa directamente con la aplicación móvil para administrar su cuenta, consultar videojuegos y realizar compras.
+#### Usuario
 
-Entre sus principales acciones se encuentran:
-- Registrarse.
-- Iniciar sesión.
-- Consultar el catálogo de videojuegos.
-- Filtrar videojuegos por categorías.
-- Consultar los detalles de un videojuego.
-- Agregar videojuegos al carrito.
-- Realizar compras.
-- Consultar el historial de compras.
-- Editar o consultar su perfil.
-- Cerrar sesión.
+Es la persona que utiliza UniRoute para consultar información relacionada con rutas y acceder a las funcionalidades disponibles.
 
-#### Administrador
-Es el actor encargado de las funciones administrativas de la aplicación.
+Entre las acciones que puede realizar, según las funciones implementadas, se encuentran:
 
-Sus funciones representadas en el sistema incluyen:
-- Gestionar usuarios.
-- Gestionar productos.
-- Consultar información relacionada con las compras.
+- Acceder a la aplicación.
+- Consultar las opciones disponibles.
+- Seleccionar un punto de origen.
+- Seleccionar un destino.
+- Solicitar información sobre una ruta.
+- Consultar los resultados disponibles.
+- Revisar las indicaciones del trayecto, si están implementadas.
 
-#### Pasarela de Pagos
-En PixelVault representa el proceso relacionado con el pago de una compra. Sin embargo, el proyecto actualmente utiliza un sistema de pago simulado y no una pasarela bancaria real.
-El usuario introduce los datos solicitados y la aplicación realiza validaciones antes de completar la compra.
+#### Servicios de Mapas o Ubicación
 
-#### AsyncStorage
-Representa el almacenamiento local utilizado por PixelVault para conservar información en el dispositivo.
+Estos servicios pueden intervenir cuando la aplicación utiliza herramientas externas para obtener información geográfica, mostrar mapas o determinar ubicaciones.
 
-La aplicación utiliza AsyncStorage para guardar:
-- La sesión activa.
-- Los usuarios registrados.
-- Las compras realizadas.
+Su participación debe confirmarse mediante la revisión del código fuente. No se consideran actores confirmados mientras no se verifique que UniRoute utiliza estos servicios.
 
-Las principales claves utilizadas son:
+#### Sistema UniRoute
 
-- `@pixelvault_sesion`
-- `@pixelvault_usuarios`
-- `@pixelvault_compras`
+Representa la aplicación encargada de recibir las acciones del usuario, procesar la información disponible y presentar los resultados de las consultas.
+
+Las operaciones específicas dependen de las funcionalidades implementadas en el proyecto.
 
 ---
 
 ## 3. Casos de Uso Principales
 
-### Registrarse
-Permite al usuario crear una nueva cuenta en PixelVault.
+### Acceder a UniRoute
 
-Para realizar el registro se solicitan datos como:
-- Nombre.
-- Correo electrónico.
-- Número de teléfono.
-- Contraseña.
+Permite al usuario abrir la aplicación y acceder a las opciones disponibles.
 
-La aplicación valida los campos requeridos y comprueba que el correo electrónico no se encuentre registrado anteriormente.
-Una vez validada la información, el usuario es agregado a los usuarios registrados y los datos se almacenan mediante AsyncStorage.
+El sistema presenta la interfaz correspondiente para que el usuario pueda comenzar a utilizar las funcionalidades implementadas.
 
-### Iniciar Sesión
+### Seleccionar Origen
 
-Permite al usuario acceder a su cuenta utilizando su correo electrónico y contraseña.
+Permite definir el punto desde el cual el usuario desea iniciar un recorrido.
 
-La aplicación comprueba que las credenciales coincidan con una cuenta registrada. Si son correctas:
-1. Se identifica al usuario.
-2. Se guarda el correo de la sesión.
-3. Se establece al usuario como conectado.
-4. Se recuperan sus datos.
-5. Se muestra la pantalla principal.
+El origen puede seleccionarse mediante los mecanismos disponibles en la aplicación, según su implementación.
 
-Si las credenciales son incorrectas, se muestra un mensaje de error.
+### Seleccionar Destino
 
-### Mantener Sesión Activa
-Este caso de uso está relacionado con el inicio de sesión.
-PixelVault guarda el correo del usuario activo utilizando la clave `@pixelvault_sesion` de AsyncStorage. Cuando la aplicación vuelve a abrirse, comprueba si existe una sesión guardada y puede restaurarla.
+Permite indicar el lugar al que el usuario desea llegar.
 
-### Consultar Catálogo de Videojuegos
-Permite al usuario visualizar los videojuegos disponibles en PixelVault.
+El destino se utiliza junto con el origen para realizar la consulta del trayecto.
 
-Los videojuegos se encuentran almacenados en el arreglo `JUEGOS_DATOS` y contienen información como:
-- Nombre.
-- Categoría.
-- Precio.
-- Disponibilidad.
-- Calificación.
-- Descripción.
-- Imagen.
+### Consultar Información de una Ruta
 
-Actualmente el catálogo contiene 68 videojuegos distribuidos en diferentes categorías.
+Permite solicitar información relacionada con un recorrido entre un origen y un destino.
 
-### Filtrar por Categorías
-Permite organizar el catálogo para mostrar únicamente los videojuegos pertenecientes a una categoría seleccionada.
+El proceso general puede incluir:
 
-Las categorías disponibles son:
-- Todos.
-- Acción.
-- Aventura.
-- Disparos.
-- Estrategia.
-- Rol.
-- Simulación.
-- Deportes y Conducción.
+1. Seleccionar el origen.
+2. Seleccionar el destino.
+3. Solicitar la información de la ruta.
+4. Procesar la consulta.
+5. Mostrar los resultados disponibles.
 
-La categoría **Todos** permite volver a visualizar el catálogo completo.
+La forma de obtener los resultados depende de los mecanismos de consulta utilizados por UniRoute.
 
-### Ver Detalles del Videojuego
-Permite consultar información específica de un videojuego seleccionado.
+### Validar los Datos de la Consulta
 
-Entre los datos mostrados se encuentran:
-- Imagen.
-- Nombre.
-- Categoría.
-- Calificación.
-- Precio.
-- Descripción.
+Permite comprobar que la información necesaria para realizar una consulta esté disponible.
 
-La información se muestra mediante un componente Modal dentro de la aplicación.
+La aplicación puede verificar que se hayan seleccionado los puntos requeridos antes de procesar la solicitud.
 
-### Agregar al Carrito
-Permite seleccionar videojuegos para posteriormente realizar una compra.
-Los productos seleccionados se almacenan temporalmente en el carrito. El usuario puede agregar uno o varios videojuegos antes de continuar con el proceso de compra.
+Los controles concretos deben coincidir con los que estén implementados en el proyecto.
 
-### Realizar Compra
-Permite al usuario completar el proceso de compra de los videojuegos agregados al carrito.
+### Visualizar los Resultados
 
-El proceso incluye:
-1. Revisar los productos seleccionados.
-2. Calcular automáticamente el total.
-3. Introducir los datos solicitados para el pago.
-4. Validar la información.
-5. Confirmar la compra.
-6. Generar un identificador de transacción.
-7. Guardar la compra.
+Permite al usuario consultar la información obtenida después de solicitar una ruta.
 
-PixelVault utiliza un sistema de pago simulado, por lo que no realiza una transacción bancaria real.
+Los resultados pueden incluir datos del recorrido, indicaciones u otra información disponible, de acuerdo con las funciones implementadas.
 
-### Procesar Pago
-Este caso de uso forma parte del proceso de compra.
-La aplicación solicita datos de tarjeta y realiza validaciones antes de permitir completar la operación.
+### Consultar Información Geográfica
 
-Se comprueba principalmente:
-- Que los campos requeridos estén completos.
-- Que el número de tarjeta tenga una longitud válida.
-- Que el CVV tenga la longitud necesaria.
-- Que la fecha de expiración tenga el formato correspondiente.
+Este caso de uso corresponde a la consulta de información geográfica cuando UniRoute dispone de funcionalidades de mapas o ubicación.
 
-### Guardar Compra
-Cuando una compra es aprobada, PixelVault genera un identificador de transacción de 8 dígitos y registra información como:
+La información presentada depende de las fuentes de datos y los servicios que utilice la aplicación.
 
-- Productos comprados.
-- Total.
-- Fecha.
-- Mes.
-- Año.
-- Número de transacción.
+### Gestionar Errores de Consulta
 
-Las compras se almacenan utilizando la clave `@pixelvault_compras` de AsyncStorage y se relacionan con el usuario que realizó la operación.
+Permite informar al usuario cuando no es posible completar una consulta.
 
-### Consultar Historial de Compras
-Permite al usuario consultar las compras realizadas anteriormente.
-El historial se obtiene desde la información almacenada en el dispositivo y las compras se relacionan con el usuario que realizó cada operación.
+Entre las situaciones que pueden requerir un mensaje se encuentran la falta de datos necesarios o la ausencia de resultados.
 
-### Editar o Consultar Perfil
-Permite visualizar los datos asociados a la cuenta que actualmente tiene la sesión iniciada.
-La información mostrada corresponde al usuario activo.
+Los mensajes y las condiciones específicas deben verificarse en el código de UniRoute.
 
-### Cerrar Sesión
-Permite finalizar la sesión actual.
-Al cerrar sesión se elimina la sesión activa almacenada, evitando que la aplicación continúe identificando al usuario como conectado.
-Cerrar sesión no elimina la cuenta ni los datos registrados del usuario.
+---
 
 ## 4. Resumen del Flujo Principal
 
-El flujo normal de utilización de PixelVault puede resumirse de la siguiente manera:
+El flujo general de consulta de una ruta en UniRoute puede resumirse de la siguiente manera:
 
-1. El usuario abre la aplicación.
-2. PixelVault comprueba si existe una sesión almacenada.
-3. Si no existe una sesión, el usuario inicia sesión.
-4. El usuario accede al catálogo de videojuegos.
-5. Puede filtrar los videojuegos por categoría.
-6. Puede consultar los detalles de un videojuego.
-7. Agrega videojuegos al carrito.
-8. El carrito calcula automáticamente el total.
-9. El usuario inicia el proceso de pago.
-10. La aplicación valida los datos introducidos.
-11. Se confirma la compra y se genera una transacción.
-12. La compra se almacena en el dispositivo.
-13. El usuario puede consultar su historial de compras.
-14. Finalmente, puede cerrar sesión.
+1. El usuario accede a UniRoute.
+2. El sistema presenta las opciones disponibles.
+3. El usuario selecciona un punto de origen.
+4. El usuario selecciona un destino.
+5. La aplicación valida los datos necesarios.
+6. El usuario solicita información de la ruta.
+7. El sistema procesa la consulta.
+8. Se obtiene la información disponible.
+9. La aplicación presenta los resultados.
+10. El usuario revisa la información del recorrido.
 
-Este flujo utiliza los componentes, estados, funciones y almacenamiento local implementados en PixelVault.
+Este flujo representa el proceso general de consulta de rutas. Los actores, servicios y pasos definitivos deben coincidir con las funcionalidades que realmente estén implementadas en UniRoute.

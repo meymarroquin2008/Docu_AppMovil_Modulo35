@@ -1,310 +1,228 @@
-# Especificación de Servicios - PixelVault Store
+# Especificación de Servicios y API - UniRoute
 
 ## 1. Descripción
 
-PixelVault Store es una aplicación móvil desarrollada con React Native y JavaScript.
+UniRoute es una aplicación orientada a facilitar la consulta de información relacionada con rutas y la navegación de sus usuarios.
 
-La versión actual de la aplicación **no utiliza una API REST externa, servidor Backend ni una base de datos en la nube**. La información necesaria para el funcionamiento de la aplicación se administra localmente mediante **AsyncStorage**.
+Este documento describe los servicios, las operaciones de información y la posible comunicación entre los componentes de la aplicación.
 
-Por esta razón, no existen rutas HTTP como `GET`, `POST`, `PUT` o `DELETE` utilizadas actualmente por PixelVault.
-
----
+La existencia de una API REST, un servidor Backend o una base de datos externa depende de la implementación real del proyecto. Por ello, no se documentan rutas HTTP específicas sin confirmar que estén implementadas.
 
 ## 2. Tecnología de Almacenamiento
 
-PixelVault utiliza **AsyncStorage** para conservar información localmente en el dispositivo.
+La información que utiliza UniRoute depende de los mecanismos de almacenamiento definidos en el proyecto.
 
-Los datos principales almacenados son:
+Los datos que podría necesitar administrar una aplicación de este tipo incluyen:
 
-* Sesión del usuario.
-* Usuarios registrados.
-* Compras realizadas.
+- Información de los usuarios, si dispone de registro e inicio de sesión.
+- Preferencias de navegación.
+- Información relacionada con las rutas.
+- Historial de consultas, si esta función está implementada.
 
-Las claves utilizadas por la aplicación son:
+La tecnología y las claves de almacenamiento deben documentarse de acuerdo con el código fuente de UniRoute.
 
-```text
-@pixelvault_sesion
-@pixelvault_usuarios
-@pixelvault_compras
-```
-
-Estas claves permiten guardar y recuperar la información necesaria para mantener el funcionamiento de la aplicación después de cerrarla.
-
----
-
-## 3. Servicio de Sesión
+## 3. Servicio de Usuarios
 
 ### Función
 
-Permite guardar y recuperar la sesión del usuario actual.
+Este servicio corresponde a las operaciones relacionadas con los usuarios, siempre que la aplicación incluya funcionalidades de registro e inicio de sesión.
 
-### Clave utilizada
+### Información principal
 
-```text
-@pixelvault_sesion
-```
-
-### Información almacenada
-
-Se guarda el correo electrónico correspondiente al usuario que inició sesión.
+Los datos pueden incluir información de identificación y preferencias del usuario, según las funciones implementadas.
 
 ### Funcionamiento
 
-Cuando el usuario inicia sesión correctamente:
+Si UniRoute dispone de autenticación, el proceso puede contemplar:
 
-1. Se comprueban sus credenciales.
-2. Se identifica la cuenta correspondiente.
-3. Se guarda el correo electrónico en AsyncStorage.
-4. Se establece el usuario como conectado.
-5. La aplicación puede recuperar la sesión posteriormente.
+1. Recibir los datos introducidos por el usuario.
+2. Validar la información.
+3. Comprobar las credenciales mediante el mecanismo de autenticación implementado.
+4. Permitir el acceso si la validación es satisfactoria.
+5. Mantener la sesión de acuerdo con el diseño de la aplicación.
 
-Cuando la aplicación vuelve a abrirse, se recupera la información almacenada para comprobar si existe una sesión válida.
+Estos pasos describen un flujo general y no confirman la existencia de un servicio de autenticación específico.
 
----
-
-## 4. Servicio de Usuarios
+## 4. Servicio de Rutas
 
 ### Función
 
-Permite conservar las cuentas registradas dentro de la aplicación.
+Permite organizar y consultar la información relacionada con las rutas que ofrece UniRoute.
 
-### Clave utilizada
+### Información principal
 
-```text
-@pixelvault_usuarios
-```
+Según la implementación, una ruta puede incluir:
 
-### Datos principales
+- Punto de origen.
+- Punto de destino.
+- Indicaciones para llegar.
+- Distancia estimada.
+- Tiempo estimado de recorrido.
+- Información complementaria del trayecto.
 
-Cada usuario puede contener información como:
-
-* Nombre.
-* Correo electrónico.
-* Número de teléfono.
-* Contraseña.
+Los campos definitivos dependen de la estructura de datos utilizada por el proyecto.
 
 ### Funcionamiento
 
-Cuando se registra una cuenta:
+El flujo general de consulta de una ruta puede incluir:
 
-1. Se validan los datos introducidos.
-2. Se comprueba que el correo no esté registrado anteriormente.
-3. El nuevo usuario se agrega al arreglo de usuarios registrados.
-4. La información actualizada se guarda mediante AsyncStorage.
+1. Seleccionar o introducir un punto de origen.
+2. Seleccionar un destino.
+3. Procesar la solicitud de ruta.
+4. Obtener o calcular la información disponible.
+5. Mostrar los resultados al usuario.
 
----
+La disponibilidad de cálculos automáticos, mapas y servicios externos debe verificarse en el código de UniRoute.
 
-## 5. Servicio de Compras
+## 5. Servicio de Ubicación
 
 ### Función
 
-Permite almacenar las compras realizadas por los usuarios.
+Este apartado describe las operaciones de ubicación que puede utilizar UniRoute para facilitar la orientación del usuario.
 
-### Clave utilizada
+### Información principal
 
-```text
-@pixelvault_compras
-```
+Dependiendo de las funciones implementadas, pueden intervenir:
 
-### Información almacenada
+- Ubicación de origen.
+- Ubicación de destino.
+- Coordenadas geográficas.
+- Referencias de lugares.
 
-Cada compra puede contener:
+### Funcionamiento
 
-* Productos comprados.
-* Total de la compra.
-* Fecha.
-* Mes.
-* Año.
-* Número de transacción.
+Cuando la aplicación utiliza servicios de ubicación, el proceso puede consistir en solicitar el permiso correspondiente, obtener la ubicación disponible y utilizarla para mostrar información relevante.
 
-Las compras se relacionan con el usuario que realizó la operación.
+El acceso a la ubicación del dispositivo, los permisos y los servicios de mapas deben documentarse según la implementación real.
 
----
+## 6. Proceso de Consulta de una Ruta
 
-## 6. Proceso de Compra
-
-PixelVault cuenta con un proceso de pago simulado.
-
-El funcionamiento general es:
+El flujo general de consulta de una ruta en UniRoute puede representarse así:
 
 ```text
-Seleccionar videojuego
-        ↓
-Agregar al carrito
-        ↓
-Revisar carrito
-        ↓
-Calcular total
-        ↓
-Introducir datos de prueba
-        ↓
-Validar información
-        ↓
-Confirmar compra
-        ↓
-Generar número de transacción
-        ↓
-Guardar compra
-        ↓
-Mostrar en historial
+Abrir UniRoute
+       ↓
+Seleccionar origen
+       ↓
+Seleccionar destino
+       ↓
+Solicitar información de la ruta
+       ↓
+Procesar la consulta
+       ↓
+Obtener los resultados disponibles
+       ↓
+Mostrar la información al usuario
 ```
 
-El total de la compra se calcula automáticamente utilizando los precios de los productos almacenados en el carrito.
+Este esquema representa el flujo funcional esperado. Los componentes que intervienen y la forma de obtener los resultados dependen de la arquitectura del proyecto.
 
----
+## 7. Procesamiento de Solicitudes
 
-## 7. Generación de Transacciones
+Cuando el usuario realiza una consulta, la aplicación debe procesar los datos necesarios y presentar los resultados correspondientes.
 
-Cuando una compra es aprobada, PixelVault genera un identificador de transacción de **8 dígitos**.
+Las operaciones pueden incluir:
 
-El registro de la compra incluye el número de transacción junto con los productos, total y fecha correspondiente.
+- Validación del origen y del destino.
+- Comprobación de los datos introducidos.
+- Consulta de información disponible.
+- Procesamiento de los resultados.
+- Presentación de mensajes cuando no se encuentran resultados.
 
-Este identificador permite diferenciar una compra de otra.
+La forma de ejecutar estas operaciones debe coincidir con las funciones realmente implementadas en UniRoute.
 
----
+## 8. Información de Rutas
 
-## 8. Catálogo de Videojuegos
+La información utilizada por UniRoute puede proceder de datos incluidos en el proyecto, almacenamiento local o servicios externos, según su arquitectura.
 
-El catálogo de PixelVault se encuentra almacenado localmente en el arreglo:
-
-```text
-JUEGOS_DATOS
-```
-
-Cada videojuego contiene información como:
+Una estructura conceptual de ruta podría contener los siguientes campos:
 
 ```text
 id
-titulo
-categoria
-precio
-disponible
-calificacion
-descripcion
-imagen
+origen
+destino
+distancia
+tiempo_estimado
+indicaciones
 ```
 
-Actualmente el catálogo contiene **68 videojuegos** distribuidos en diferentes categorías.
+Esta estructura es un ejemplo documental y no representa necesariamente los nombres de los campos utilizados en el código fuente.
 
-Las categorías disponibles son:
+## 9. Operaciones de la Aplicación
 
-* Todos
-* Acción
-* Aventura
-* Disparos
-* Estrategia
-* Rol
-* Simulación
-* Deportes y Conducción
+Las principales operaciones funcionales que pueden documentarse son:
 
----
+| Operación | Función |
+|---|---|
+| Selección de origen | Define el punto inicial del recorrido. |
+| Selección de destino | Define el lugar al que se desea llegar. |
+| Consulta de ruta | Solicita información del trayecto. |
+| Procesamiento de datos | Valida y organiza la información recibida. |
+| Visualización de resultados | Presenta los datos de la ruta al usuario. |
+| Gestión de ubicación | Utiliza información geográfica si está disponible. |
 
-## 9. Operaciones Locales
+Estas operaciones describen funciones de la aplicación y no equivalen necesariamente a endpoints HTTP.
 
-Aunque PixelVault no utiliza endpoints HTTP, la aplicación realiza diferentes operaciones internas para administrar la información.
+## 10. Métodos y Funciones de Programación
 
-| Operación                  | Función                              |
-| -------------------------- | ------------------------------------ |
-| Registro                   | Crea nuevos usuarios                 |
-| Inicio de sesión           | Comprueba las credenciales           |
-| Recuperación de contraseña | Actualiza la contraseña              |
-| Filtrado                   | Selecciona videojuegos por categoría |
-| Carrito                    | Agrega y elimina productos           |
-| Cálculo                    | Obtiene el total de la compra        |
-| Compra                     | Registra una nueva transacción       |
-| Historial                  | Consulta compras almacenadas         |
-| Sesión                     | Mantiene identificado al usuario     |
+La implementación de UniRoute puede utilizar funciones y métodos para validar datos, procesar resultados y actualizar la interfaz.
 
----
+Los métodos concretos deben documentarse después de revisar el código fuente.
 
-## 10. Métodos JavaScript Utilizados
+No se atribuyen métodos JavaScript específicos al proyecto sin comprobar que realmente se utilizan.
 
-PixelVault utiliza diferentes funciones y métodos de JavaScript para procesar la información.
+## 11. API REST y Endpoints HTTP
 
-### `find()`
+Un endpoint es una dirección de un servicio que permite acceder a una operación mediante una API.
 
-Se utiliza para localizar un usuario específico dentro de los usuarios registrados.
+Si UniRoute implementa una API REST, su documentación debe especificar para cada endpoint:
 
-### `filter()`
+- Ruta o URL.
+- Método HTTP.
+- Parámetros requeridos.
+- Datos enviados en la solicitud.
+- Estructura de la respuesta.
+- Códigos de estado.
+- Posibles errores.
 
-Se utiliza para filtrar videojuegos por categoría y compras correspondientes al mes actual.
+Por ejemplo, una API podría utilizar métodos como `GET`, `POST`, `PUT` o `DELETE`, según las operaciones disponibles.
 
-### `reduce()`
+Estos métodos se presentan únicamente como referencia técnica. Las rutas y los métodos reales de UniRoute deben obtenerse del código fuente o de la documentación de sus servicios.
 
-Se utiliza para calcular automáticamente el total de los productos del carrito.
+Si la aplicación no utiliza un servidor API, debe indicarse expresamente y documentarse el mecanismo real de comunicación y almacenamiento.
 
-### `JSON.stringify()`
+## 12. Posibles Mejoras Futuras
 
-Convierte los datos JavaScript en texto para poder almacenarlos en AsyncStorage.
+Entre las posibles ampliaciones de UniRoute podrían considerarse:
 
-### `JSON.parse()`
+- Integración de servicios de mapas.
+- Obtención de información de rutas mediante una API.
+- Actualización de datos desde un servidor.
+- Gestión de usuarios, si resulta necesaria.
+- Mejora del manejo de errores.
+- Optimización de las consultas de rutas.
+- Ampliación de la información presentada al usuario.
 
-Convierte nuevamente los datos almacenados en objetos o arreglos JavaScript.
-
-### `toLowerCase()`
-
-Permite comparar los correos electrónicos sin diferenciar entre mayúsculas y minúsculas.
-
----
-
-## 11. API REST
-
-Actualmente PixelVault **no consume una API REST externa**.
-
-Por lo tanto, no se utilizan actualmente:
-
-```text
-GET
-POST
-PUT
-DELETE
-```
-
-contra un servidor remoto.
-
-La aplicación funciona utilizando los datos incluidos en el proyecto y el almacenamiento local proporcionado por AsyncStorage.
-
----
-
-## 12. Posibles Servicios Futuros
-
-Como mejoras futuras, el proyecto podría incorporar:
-
-* Un servidor Backend.
-* Una base de datos en la nube.
-* Autenticación segura.
-* Una API REST.
-* Una pasarela de pago real.
-* Actualización de precios desde un servidor.
-* Actualización de disponibilidad de videojuegos.
-* Administración remota de productos.
-
-Estas funciones corresponden a posibles ampliaciones y **no forman parte de la implementación actual** de PixelVault.
-
----
+Estas opciones son propuestas de mejora y no deben interpretarse como funciones ya implementadas.
 
 ## 13. Resumen
 
-La versión actual de PixelVault utiliza una arquitectura de almacenamiento local.
+La documentación de los servicios de UniRoute debe reflejar fielmente la arquitectura y las funcionalidades disponibles en el proyecto.
+
+El flujo funcional general puede representarse de la siguiente manera:
 
 ```text
 Usuario
    ↓
-Aplicación React Native
+Aplicación UniRoute
    ↓
-Funciones JavaScript
+Selección del origen y destino
    ↓
-AsyncStorage
+Procesamiento de la consulta
    ↓
-Información local del dispositivo
+Obtención de información disponible
+   ↓
+Visualización de la ruta
 ```
 
-Los principales datos administrados son:
-
-```text
-Usuarios
-Sesión
-Compras
-```
-
-Por lo tanto, la documentación de esta versión no incluye endpoints REST reales debido a que la aplicación actualmente no utiliza un servidor API externo.
+La existencia de una API REST, un Backend, una base de datos o servicios externos debe confirmarse mediante la revisión del código fuente antes de documentar endpoints específicos.

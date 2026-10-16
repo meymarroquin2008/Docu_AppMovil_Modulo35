@@ -1,44 +1,38 @@
-# PixelVault Store
+# Portal Web de Documentación
 
-Aplicación móvil desarrollada con **React Native y JavaScript** que simula una tienda digital de videojuegos.
+**Sitio Web en Vivo:** [Haz clic aquí para ver la Documentación Publicada](https://meymarroquin2008.github.io/Docu_AppMovil_Modulo35/)
 
-PixelVault Store permite a los usuarios registrarse, iniciar sesión, consultar un catálogo de videojuegos, filtrar por categorías, visualizar información de los juegos, agregar productos al carrito, realizar un pago simulado y consultar el historial de compras.
+# UniRoute
+
+UniRoute es un proyecto de aplicación móvil orientado a facilitar la consulta de rutas y apoyar a los usuarios en la búsqueda de información para sus desplazamientos.
+
+La aplicación busca ofrecer una experiencia de navegación sencilla, mediante una interfaz organizada que facilite la consulta de información relacionada con las rutas disponibles, según las funcionalidades implementadas en el proyecto.
 
 ## Tecnologías utilizadas
 
-* React Native
-* JavaScript
-* Expo
-* AsyncStorage
-* Expo Vector Icons / Ionicons
+Las tecnologías utilizadas deben verificarse directamente en el código fuente del proyecto para garantizar que la documentación sea correcta.
 
 ## Funcionalidades principales
 
-* Registro de usuarios.
-* Inicio y cierre de sesión.
-* Recuperación de contraseña.
-* Persistencia de sesión.
-* Catálogo de videojuegos.
-* Filtrado por categorías.
-* Visualización de detalles de cada juego.
-* Carrito de compras.
-* Cálculo automático del total.
-* Pago simulado.
-* Generación de número de transacción.
-* Historial de compras.
-* Perfil del usuario.
+- Consulta de información relacionada con rutas.
+- Selección de origen y destino, según la implementación.
+- Validación de los datos ingresados.
+- Visualización de resultados de consulta.
+- Interfaz orientada a facilitar la navegación del usuario.
+
+*Nota: las funcionalidades específicas deben coincidir con las que están implementadas en la aplicación.*
 
 ## Documentación
 
 La documentación técnica del proyecto se encuentra organizada en la carpeta `docs/`.
 
-* [Arquitectura del proyecto](docs/arquitectura.md)
-* [Casos de uso](docs/casos_de_uso.md)
-* [Diagrama de secuencia](docs/secuencia.md)
-* [Instalación móvil](docs/instalacion_movil.md)
-* [API y servicios](docs/api_endpoints.md)
-* [Manual de usuario](docs/manual_usuario.md)
-* [Seguridad](docs/seguridad.md)
+- [Arquitectura del proyecto](docs/arquitectura.md)
+- [Casos de uso](docs/casos_de_uso.md)
+- [Diagrama de secuencia](docs/secuencia.md)
+- [Instalación móvil](docs/instalacion_movil.md)
+- [API y servicios](docs/api_endpoints.md)
+- [Manual de usuario](docs/manual_usuario.md)
+- [Políticas de Seguridad](docs/seguridad.md)
 
 ## Diagramas
 
@@ -46,38 +40,32 @@ Los diagramas utilizados en la documentación se encuentran en:
 
 `docs/assets/`
 
-* `diagrama_casos_uso.png`
-* `diagrama_secuencia.png`
+- `diagrama_casos_uso.png`
+- `diagrama_secuencia.png`
 
-## Almacenamiento local
+## Almacenamiento de información
 
-PixelVault utiliza **AsyncStorage** para conservar información localmente.
-
-Principales claves utilizadas:
-
-* `@pixelvault_sesion`
-* `@pixelvault_usuarios`
-* `@pixelvault_compras`
+El almacenamiento de información de UniRoute depende de la implementación técnica del proyecto. Para documentar el tipo de almacenamiento, las tecnologías y las estructuras utilizadas, es necesario verificar el código fuente de la aplicación.
 
 ## Limitaciones
 
-El proyecto es una aplicación académica y actualmente utiliza almacenamiento local.
+UniRoute es un proyecto académico. Sus funcionalidades y limitaciones deben describirse de acuerdo con la implementación actual.
 
-El proceso de pago es únicamente una **simulación** y no utiliza una plataforma bancaria o una pasarela de pago real.
-
-No se deben utilizar datos reales de tarjetas dentro de la aplicación.
+La disponibilidad de rutas, la precisión de los resultados y el acceso a servicios externos dependen de las fuentes de información y de las funciones que realmente estén integradas en la aplicación.
 
 ## Versión
 
 **v1.0.0**
 
-Primera versión estable del proyecto.
+Primera versión documentada del proyecto UniRoute.
 
 ## Autores
 
-* Brenda Lisseth Córdova Vigil
-* Maybelline Gabriela Marroquín Chávez
+- Brenda Lisseth Córdova Vigil
+- Maybelline Gabriela Marroquín Chávez
 
 ## Curso
 
 **3° Desarrollo de Software**
+
+**Institución:** Complejo Educativo Delgado

@@ -1,82 +1,89 @@
-# Diagrama de Secuencia - PixelVault Store
+# Diagrama de Secuencia - UniRoute
 
-## 1. Diagrama de Interacción
-![Diagrama de Secuencia](assets/diagrama_secuencia.png)
+## 1. Introducción
 
-## 2. Explicación del Flujo
-El diagrama de secuencia representa el proceso de interacción entre el usuario y los diferentes componentes de la aplicación PixelVault Store durante el flujo de compra de un videojuego.
+El diagrama de secuencia permite representar el orden de las interacciones entre el usuario y los componentes de UniRoute durante una consulta de rutas.
+
+Este documento describe el flujo general desde que el usuario abre la aplicación hasta que consulta los resultados de una ruta.
+
+## 2. Diagrama de Interacción
+
+El siguiente diagrama representa un flujo general de consulta de rutas. Los participantes y las operaciones deberán ajustarse a los componentes reales de la aplicación.
+
+```mermaid
+sequenceDiagram
+    actor Usuario
+    participant App as Aplicación UniRoute
+    participant Consulta as Módulo de consulta
+    participant Datos as Fuente de información
+
+    Usuario->>App: Abre la aplicación
+    App-->>Usuario: Muestra la pantalla inicial
+    Usuario->>App: Introduce origen y destino
+    App->>App: Valida los datos ingresados
+    App->>Consulta: Solicita la consulta de ruta
+    Consulta->>Datos: Solicita información necesaria
+    Datos-->>Consulta: Devuelve la información disponible
+    Consulta-->>App: Devuelve el resultado
+    App-->>Usuario: Muestra los resultados
+    Usuario->>App: Revisa la información de la ruta
+```
+
+**Nota:** El diagrama es una representación conceptual. El participante «Fuente de información» debe ajustarse a la implementación real de UniRoute. Si la aplicación no utiliza un servicio externo o un módulo independiente de consulta, el diagrama debe modificarse para reflejar su arquitectura.
+
+## 3. Explicación del Flujo
 
 ### Paso 1: Inicio de la aplicación
-El usuario abre la aplicación PixelVault Store. El sistema verifica si existe una sesión activa almacenada en el dispositivo.
-Si existe una sesión, el usuario puede acceder directamente a la aplicación. Si no existe, debe iniciar sesión o registrarse.
 
-### Paso 2: Inicio de sesión
-El usuario introduce su correo electrónico y contraseña.
-La aplicación valida los datos ingresados y comprueba que correspondan con un usuario registrado.
+El usuario abre UniRoute desde el dispositivo o entorno disponible. La aplicación carga la pantalla inicial y presenta las opciones habilitadas para su utilización.
 
-Cuando el inicio de sesión es correcto, se almacena la sesión activa utilizando:
-`@pixelvault_sesion`
+### Paso 2: Acceso a la consulta de rutas
 
-### Paso 3: Consulta del catálogo
-Una vez iniciada la sesión, el usuario puede consultar el catálogo de videojuegos.
+El usuario identifica y selecciona la opción destinada a consultar rutas, si se encuentra disponible en la versión actual de la aplicación.
 
-La aplicación muestra los juegos disponibles y permite filtrarlos mediante diferentes categorías, como:
-- Acción
-- Aventura
-- Disparos
-- Estrategia
-- Rol
-- Simulación
-- Deportes y Conducción
+### Paso 3: Selección del origen y destino
 
-### Paso 4: Consulta de detalles
-El usuario selecciona un videojuego del catálogo.
-La aplicación muestra información relacionada con el juego seleccionado mediante una ventana modal, permitiendo consultar sus detalles antes de realizar la compra.
+El usuario introduce o selecciona el punto de origen y el destino deseado. Antes de continuar, debe comprobar que ambos datos sean correctos.
 
-### Paso 5: Agregar producto al carrito
-El usuario selecciona la opción para agregar el videojuego al carrito.
-La aplicación actualiza el estado del carrito y agrega el producto seleccionado.
-El usuario puede continuar agregando productos o revisar el carrito.
+### Paso 4: Validación de los datos
 
-### Paso 6: Cálculo del total
-Cuando el usuario revisa el carrito, la aplicación calcula automáticamente el total de los productos seleccionados.
-El total se obtiene sumando el precio de cada elemento del carrito.
+La aplicación comprueba la información ingresada de acuerdo con las validaciones implementadas. Si faltan datos o existe algún problema, debe indicarse al usuario que revise la información.
 
-### Paso 7: Proceso de pago
-El usuario selecciona la opción para realizar el pago.
-La aplicación muestra el formulario de pago y solicita los datos de una tarjeta.
-El sistema realiza validaciones sobre los campos ingresados, incluyendo el número de tarjeta y el código CVV.
-Este proceso es una simulación y no utiliza una pasarela bancaria real.
+### Paso 5: Solicitud de consulta
 
-### Paso 8: Confirmación de la compra
-Si los datos cumplen con las validaciones requeridas, la compra es aprobada.
-La aplicación genera un identificador de transacción de 8 dígitos para distinguir la operación.
+Cuando los datos son válidos, la aplicación inicia el proceso de consulta de la ruta mediante el mecanismo definido en el proyecto.
 
-También se registra información como:
-- Productos comprados.
-- Total de la compra.
-- Fecha.
-- Mes.
-- Año.
-- Número de transacción.
+### Paso 6: Obtención de información
 
-### Paso 9: Guardado de la compra
+El componente responsable de la consulta procesa la solicitud y obtiene la información necesaria. La fuente de estos datos depende de la arquitectura real de UniRoute.
 
-La información de la compra se almacena localmente utilizando:
-`@pixelvault_compras`
+### Paso 7: Procesamiento del resultado
 
-La compra queda asociada al usuario que realizó la operación, permitiendo conservar diferentes historiales para distintas cuentas.
+La aplicación recibe y procesa la información disponible para preparar los resultados que se mostrarán al usuario.
 
-### Paso 10: Consulta del historial
-Después de realizar la compra, el usuario puede consultar su historial de compras.
-La aplicación utiliza la fecha actual para identificar las compras correspondientes al mes y año actuales y mostrarlas en la sección correspondiente.
+### Paso 8: Visualización de resultados
 
-### Paso 11: Cierre de sesión
-Finalmente, el usuario puede cerrar sesión.
-La aplicación elimina la sesión activa almacenada y regresa a la pantalla correspondiente para iniciar sesión nuevamente.
-Cerrar sesión no elimina la cuenta ni las compras almacenadas.
+La aplicación presenta los resultados de la consulta. El usuario revisa la información mostrada y comprueba que corresponda al origen y destino seleccionados.
 
-## 3. Resumen del Flujo
-El flujo principal de PixelVault Store puede resumirse de la siguiente manera:
+### Paso 9: Finalización de la consulta
 
-**Abrir aplicación → Iniciar sesión → Consultar catálogo → Ver detalles → Agregar al carrito → Calcular total → Realizar pago → Validar datos → Generar transacción → Guardar compra → Consultar historial → Cerrar sesión.**
+El usuario puede continuar utilizando las opciones disponibles o realizar otra consulta, si la aplicación lo permite.
+
+## 4. Resumen del Flujo
+
+El flujo general de consulta de rutas en UniRoute puede resumirse de la siguiente manera:
+
+**Abrir aplicación → Acceder a la consulta → Seleccionar origen y destino → Validar datos → Solicitar consulta → Procesar información → Mostrar resultados → Revisar la ruta.**
+
+## 5. Consideraciones Técnicas
+
+- El diagrama representa el flujo conceptual de una consulta de rutas.
+- Los participantes deben corresponder a los componentes reales del proyecto.
+- La fuente de información puede ser local o externa, según la implementación.
+- Las validaciones deben coincidir con las que realmente ejecuta la aplicación.
+- Si se modifica el funcionamiento de UniRoute, el diagrama y su explicación deben actualizarse.
+- El diagrama Mermaid requiere que la documentación tenga habilitado el soporte correspondiente para visualizarse como gráfico.
+
+## 6. Conclusión
+
+El diagrama de secuencia ayuda a comprender el orden de las operaciones que intervienen en una consulta de rutas en UniRoute. Su propósito es facilitar la comprensión de la interacción entre el usuario y la aplicación, así como apoyar el análisis, el mantenimiento y la documentación del proyecto.
