@@ -1,329 +1,220 @@
-# Manual de Usuario - PixelVault Store
+# Manual de Usuario - UniRoute
 
 ## 1. Introducción
 
-PixelVault Store es una aplicación móvil que simula una tienda digital de videojuegos.
+**UniRoute** es un proyecto orientado a facilitar la consulta de rutas y la navegación de los usuarios. Su documentación permite conocer la finalidad de la aplicación, identificar sus principales elementos y comprender cómo utilizar las funciones disponibles.
 
-La aplicación permite al usuario crear una cuenta, iniciar sesión, consultar videojuegos, filtrar el catálogo por categorías, revisar información de cada producto, agregar videojuegos al carrito, realizar una compra simulada y consultar el historial de compras.
-
----
+Este manual presenta las indicaciones generales para utilizar UniRoute de manera sencilla y ordenada. Los pasos específicos deben ajustarse a las funcionalidades implementadas en la versión actual del proyecto.
 
 ## 2. Inicio de la Aplicación
 
-Al abrir PixelVault Store, la aplicación carga la información almacenada previamente en el dispositivo.
+Para comenzar a utilizar UniRoute, el usuario debe abrir la aplicación desde el dispositivo o entorno en el que se encuentre instalada o ejecutándose.
 
-El sistema comprueba si existe una sesión activa.
+Al iniciar, se recomienda comprobar que:
 
-* Si existe una sesión válida, el usuario puede acceder directamente a la aplicación.
-* Si no existe una sesión, se muestra la pantalla de inicio de sesión.
+- La pantalla inicial se muestre correctamente.
+- Los elementos de la interfaz sean visibles.
+- Las opciones de navegación estén disponibles.
+- No aparezcan mensajes de error que impidan utilizar la aplicación.
 
-La aplicación utiliza almacenamiento local para conservar la sesión, los usuarios registrados y las compras realizadas.
+La pantalla inicial puede variar según la versión y la configuración del proyecto.
 
----
+## 3. Reconocimiento de la Interfaz
 
-## 3. Registro de Usuario
+La interfaz de UniRoute permite al usuario identificar las opciones disponibles y acceder a las funciones de la aplicación.
 
-Si el usuario todavía no posee una cuenta, puede utilizar la opción de registro.
+Durante su utilización, se recomienda reconocer los siguientes elementos, cuando estén presentes:
 
-Para crear una cuenta se solicitan los siguientes datos:
+- **Botones:** permiten ejecutar acciones específicas.
+- **Campos de entrada:** permiten introducir información.
+- **Menús de navegación:** facilitan el acceso a distintas secciones.
+- **Mensajes informativos:** comunican resultados, advertencias o errores.
+- **Resultados de consulta:** presentan la información generada por las funciones disponibles.
 
-* Nombre.
-* Correo electrónico.
-* Número de teléfono.
-* Contraseña.
+Es importante leer las indicaciones de cada pantalla antes de realizar una acción.
 
-Antes de crear la cuenta, la aplicación realiza diferentes validaciones.
+## 4. Consulta de Rutas
 
-También comprueba que el correo electrónico no haya sido registrado anteriormente.
+Una de las funciones principales de UniRoute es facilitar la consulta de rutas.
 
-El correo se convierte a minúsculas para evitar problemas entre direcciones escritas con mayúsculas y minúsculas.
+Cuando la opción esté disponible, el usuario puede seguir estos pasos:
 
-Una vez completado correctamente el registro, la cuenta queda almacenada localmente.
+1. Abrir la sección destinada a la consulta de rutas.
+2. Identificar el campo correspondiente al punto de origen.
+3. Introducir o seleccionar el lugar desde donde desea comenzar.
+4. Identificar el campo correspondiente al destino.
+5. Introducir o seleccionar el lugar al que desea llegar.
+6. Revisar que la información ingresada sea correcta.
+7. Ejecutar la consulta mediante el botón correspondiente.
+8. Esperar a que la aplicación procese la solicitud.
+9. Revisar los resultados que se muestren en pantalla.
 
----
+Las opciones de búsqueda y la forma de seleccionar los lugares dependen de la implementación de UniRoute.
 
-## 4. Inicio de Sesión
+## 5. Selección del Origen y el Destino
 
-Para iniciar sesión, el usuario debe introducir:
+Para consultar una ruta, es necesario identificar los lugares que se desean utilizar como origen y destino, si esta función está disponible.
 
-* Correo electrónico.
-* Contraseña.
+Se recomienda:
 
-La aplicación comprueba que las credenciales coincidan con una cuenta registrada.
+- Introducir correctamente el nombre del lugar.
+- Revisar que el origen corresponda al punto de partida deseado.
+- Comprobar que el destino sea el lugar al que se desea llegar.
+- Corregir los datos si se detecta algún error.
+- Seguir las indicaciones de la aplicación cuando no se encuentre un lugar.
 
-Si los datos son correctos:
+Una selección incorrecta puede producir resultados diferentes de los esperados.
 
-1. Se identifica al usuario.
-2. Se guarda la sesión.
-3. Se establece el usuario como conectado.
-4. Se recuperan sus datos.
-5. Se muestra la pantalla principal.
+## 6. Visualización de los Resultados
 
-Si los datos son incorrectos, la aplicación muestra un mensaje indicando que las credenciales no son válidas.
+Después de realizar una consulta, el usuario debe revisar la información presentada por la aplicación.
 
----
+Según las funciones implementadas, los resultados podrían incluir información sobre la ruta solicitada, indicaciones del recorrido u otros datos relacionados con la consulta.
 
-## 5. Mostrar u Ocultar Contraseña
+Para interpretar los resultados correctamente:
 
-Los campos de contraseña cuentan con una opción para mostrar u ocultar el contenido.
+1. Leer la información que aparece en pantalla.
+2. Comprobar que corresponda al origen y destino seleccionados.
+3. Revisar las indicaciones disponibles.
+4. Identificar cualquier mensaje informativo o advertencia.
+5. Realizar una nueva consulta si los resultados no corresponden a lo esperado.
 
-El usuario puede presionar el icono del ojo para cambiar entre:
+No todas las versiones de UniRoute necesariamente ofrecen las mismas opciones de visualización.
 
-* Contraseña oculta.
-* Contraseña visible.
+## 7. Navegación entre las Secciones
 
-Esta función está disponible durante el inicio de sesión y utiliza iconos de Ionicons.
+Si la aplicación cuenta con varias pantallas o secciones, el usuario puede utilizar los elementos de navegación para acceder a ellas.
 
----
+Para desplazarse correctamente:
 
-## 6. Recuperación de Contraseña
+1. Identificar el menú o los botones disponibles.
+2. Seleccionar la opción deseada.
+3. Esperar a que se muestre la pantalla correspondiente.
+4. Comprobar que el contenido coincida con la opción seleccionada.
+5. Utilizar las opciones de regreso o navegación disponibles para continuar.
 
-PixelVault incluye una opción para recuperar la contraseña.
+Se recomienda evitar presionar repetidamente los botones si la aplicación está procesando una solicitud.
 
-El usuario debe proporcionar:
+## 8. Validación de la Información
 
-* Correo electrónico registrado.
-* Nueva contraseña.
-* Confirmación de la nueva contraseña.
+Antes de realizar una consulta, el usuario debe verificar que los datos introducidos sean correctos.
 
-La aplicación comprueba que el correo exista y que las dos contraseñas coincidan.
+Se recomienda comprobar:
 
-Si la información es correcta, la contraseña se actualiza y los datos se guardan nuevamente.
+- Que los campos obligatorios estén completos.
+- Que los nombres de los lugares estén escritos correctamente.
+- Que se hayan seleccionado las opciones deseadas.
+- Que no existan espacios o datos incorrectos que dificulten la consulta.
 
----
+Si la aplicación muestra un mensaje de validación, se deben seguir las indicaciones proporcionadas para corregir la información.
 
-## 7. Catálogo de Videojuegos
+## 9. Mensajes y Notificaciones
 
-Después de iniciar sesión, el usuario puede consultar el catálogo de videojuegos disponibles.
+Los mensajes que aparecen en la interfaz ayudan al usuario a comprender el estado de una operación.
 
-Cada videojuego contiene información como:
+Estos mensajes pueden informar sobre:
 
-* Nombre.
-* Categoría.
-* Precio.
-* Disponibilidad.
-* Calificación.
-* Descripción.
-* Imagen.
+- La necesidad de completar un campo.
+- La existencia de información incorrecta.
+- El resultado de una consulta.
+- La imposibilidad de realizar una operación.
+- La presencia de un problema durante la ejecución.
 
-El catálogo contiene actualmente **68 videojuegos**.
+Cuando aparezca un mensaje de error, se recomienda leerlo cuidadosamente y corregir los datos o repetir la acción cuando corresponda.
 
----
+## 10. Solución de Problemas Básicos
 
-## 8. Filtrar por Categoría
+### La aplicación no abre
 
-El usuario puede utilizar las categorías disponibles para encontrar videojuegos específicos.
+- Comprobar que la aplicación esté disponible en el dispositivo o entorno utilizado.
+- Intentar abrirla nuevamente.
+- Verificar si aparece algún mensaje de error.
+- Informar del problema si no es posible solucionarlo.
 
-Las categorías son:
+### No puedo consultar una ruta
 
-* Todos.
-* Acción.
-* Aventura.
-* Disparos.
-* Estrategia.
-* Rol.
-* Simulación.
-* Deportes y Conducción.
+- Comprobar que se hayan introducido el origen y el destino.
+- Revisar que los datos sean correctos.
+- Confirmar que se hayan seguido las instrucciones de la pantalla.
+- Intentar nuevamente la consulta.
 
-Al seleccionar una categoría, la aplicación muestra únicamente los videojuegos correspondientes.
+### No aparecen resultados
 
-La opción **Todos** permite volver a visualizar el catálogo completo.
+- Revisar la información ingresada.
+- Comprobar la conexión a Internet si la función depende de ella.
+- Esperar a que termine el procesamiento de la solicitud.
+- Volver a intentarlo si se presenta un error temporal.
 
----
+### Un botón no responde
 
-## 9. Consultar los Detalles de un Videojuego
+- Comprobar que se esté seleccionando el elemento correcto.
+- Esperar unos segundos antes de volver a intentarlo.
+- Verificar si existe algún mensaje informativo.
+- Informar del problema si la opción continúa sin funcionar.
 
-El usuario puede seleccionar un videojuego para consultar información más detallada.
+### La información mostrada no es la esperada
 
-Los datos que pueden visualizarse son:
+- Revisar el origen y el destino seleccionados.
+- Realizar nuevamente la consulta.
+- Comprobar que se haya seleccionado la opción correcta.
 
-* Imagen.
-* Nombre.
-* Categoría.
-* Calificación.
-* Precio.
-* Descripción.
-* Disponibilidad.
+## 11. Recomendaciones de Uso
 
-La información se muestra mediante un modal sin necesidad de abandonar la pantalla principal.
+Para utilizar UniRoute de manera adecuada, se recomienda:
 
----
+- Leer las indicaciones que aparecen en cada pantalla.
+- Introducir información correcta y completa.
+- Revisar el origen y el destino antes de consultar una ruta.
+- Esperar a que finalicen las operaciones.
+- Prestar atención a los mensajes de error.
+- Mantener actualizada la aplicación cuando existan nuevas versiones.
+- Comunicar los errores encontrados para facilitar su corrección.
 
-## 10. Agregar un Videojuego al Carrito
+## 12. Consideraciones de Seguridad y Privacidad
 
-Para comprar un videojuego, el usuario puede agregarlo al carrito.
+Durante el uso de UniRoute, se recomienda:
 
-Antes de agregar el producto, la aplicación comprueba que se encuentre disponible.
+- Proporcionar únicamente la información necesaria para utilizar las funciones disponibles.
+- Revisar los permisos solicitados por la aplicación.
+- Evitar compartir información personal innecesaria.
+- Utilizar conexiones confiables cuando se transmitan datos.
+- Consultar las políticas de privacidad del proyecto, si están disponibles.
 
-Si el producto está disponible, se agrega al carrito.
+El tratamiento de los datos depende de los mecanismos de almacenamiento y de los servicios que realmente utilice la aplicación.
 
-El usuario puede agregar uno o varios videojuegos.
+## 13. Flujo General de Uso
 
----
+El flujo general de consulta de rutas en UniRoute puede representarse de la siguiente manera:
 
-## 11. Revisar el Carrito
+1. Abrir la aplicación.
+2. Identificar las opciones de la interfaz.
+3. Acceder a la función de consulta de rutas, si está disponible.
+4. Seleccionar o introducir el origen.
+5. Seleccionar o introducir el destino.
+6. Revisar la información ingresada.
+7. Ejecutar la consulta.
+8. Revisar los resultados.
+9. Corregir los datos y repetir la consulta si es necesario.
+10. Continuar utilizando las opciones disponibles.
 
-El carrito permite consultar los videojuegos seleccionados antes de realizar la compra.
+## 14. Limitaciones
 
-El usuario puede:
+Las funciones disponibles dependen de la versión actual de UniRoute y de su implementación técnica.
 
-* Ver los productos seleccionados.
-* Eliminar productos.
-* Consultar el total de la compra.
+Antes de utilizar la aplicación, se debe tener en cuenta que:
 
-El total se calcula automáticamente sumando el precio de todos los videojuegos incluidos en el carrito.
+- Las opciones de consulta dependen de las funciones desarrolladas.
+- La disponibilidad de resultados puede depender de los servicios utilizados.
+- Algunas funciones pueden requerir conexión a Internet.
+- La interfaz puede cambiar entre versiones.
+- Las funciones que todavía no estén implementadas no deben considerarse disponibles.
 
-Por ejemplo:
+No se deben asumir características como cuentas de usuario, historial de rutas, seguimiento en tiempo real o almacenamiento de ubicaciones si no han sido verificadas en el proyecto.
 
-```text
-Juego A     $10
-Juego B     $20
-Juego C     $15
-----------------
-Total       $45
-```
+## 15. Resumen
 
-El usuario no necesita introducir manualmente el total.
+UniRoute está orientado a facilitar la consulta de rutas y la navegación entre las opciones disponibles de la aplicación.
 
----
+Para utilizarlo correctamente, el usuario debe reconocer la interfaz, introducir los datos solicitados, revisar los resultados y seguir las indicaciones que aparecen en pantalla.
 
-## 12. Proceso de Pago
-
-PixelVault cuenta con un proceso de pago simulado.
-
-El usuario debe introducir los datos solicitados en el formulario de pago.
-
-La aplicación realiza validaciones para comprobar:
-
-* Que los campos requeridos estén completos.
-* Que el número de tarjeta tenga una longitud válida.
-* Que el CVV tenga la longitud necesaria.
-
-El proceso **no corresponde a un pago bancario real**.
-
-Por seguridad, durante las pruebas no deben utilizarse datos reales de tarjetas.
-
----
-
-## 13. Confirmación de Compra
-
-Después de superar las validaciones del proceso de pago, el usuario puede confirmar la compra.
-
-La aplicación genera automáticamente un número de transacción de **8 dígitos**.
-
-La compra registra información como:
-
-* Productos comprados.
-* Total.
-* Fecha.
-* Mes.
-* Año.
-* Número de transacción.
-
----
-
-## 14. Historial de Compras
-
-El usuario puede consultar las compras realizadas anteriormente.
-
-Las compras se almacenan localmente y están relacionadas con el usuario que realizó la operación.
-
-El historial permite consultar las compras registradas y utiliza la fecha actual para identificar las compras correspondientes al mes y año actuales.
-
----
-
-## 15. Perfil del Usuario
-
-PixelVault cuenta con una sección de perfil.
-
-En esta sección se pueden visualizar los datos asociados con la cuenta que actualmente tiene la sesión iniciada.
-
-La información mostrada corresponde al usuario activo.
-
----
-
-## 16. Cerrar Sesión
-
-El usuario puede cerrar su sesión desde la aplicación.
-
-Al cerrar sesión:
-
-1. Se elimina la sesión activa almacenada.
-2. La aplicación deja de identificar al usuario como conectado.
-3. El usuario regresa a la pantalla correspondiente para iniciar sesión nuevamente.
-
-Cerrar sesión **no elimina la cuenta ni las compras registradas**.
-
----
-
-## 17. Flujo General de Uso
-
-El funcionamiento normal de PixelVault puede resumirse de la siguiente manera:
-
-```text
-Abrir aplicación
-       ↓
-Comprobar sesión
-       ↓
-Iniciar sesión o registrarse
-       ↓
-Acceder al catálogo
-       ↓
-Seleccionar categoría
-       ↓
-Consultar videojuego
-       ↓
-Agregar al carrito
-       ↓
-Revisar carrito
-       ↓
-Calcular total
-       ↓
-Realizar pago simulado
-       ↓
-Confirmar compra
-       ↓
-Generar transacción
-       ↓
-Guardar compra
-       ↓
-Consultar historial
-       ↓
-Cerrar sesión
-```
-
----
-
-## 18. Recomendaciones de Uso
-
-Para utilizar correctamente PixelVault Store se recomienda:
-
-* Utilizar datos de prueba durante las demostraciones.
-* No utilizar información bancaria real.
-* Verificar los datos antes de confirmar una compra.
-* Comprobar que los videojuegos seleccionados estén disponibles.
-* Cerrar sesión cuando termine la utilización de la aplicación en un dispositivo compartido.
-
----
-
-## 19. Limitaciones
-
-PixelVault es un proyecto académico.
-
-Actualmente:
-
-* Utiliza almacenamiento local.
-* No utiliza un servidor Backend.
-* No utiliza una base de datos en la nube.
-* El sistema de pago es simulado.
-* No existe conexión con una plataforma bancaria real.
-
-Estas características podrían ampliarse en futuras versiones del proyecto.
-
----
-
-## 20. Resumen
-
-PixelVault Store permite al usuario gestionar una cuenta, consultar un catálogo de videojuegos, filtrar productos, revisar sus detalles, administrar un carrito, realizar una compra simulada y consultar su historial.
-
-La aplicación utiliza React Native, JavaScript y AsyncStorage para proporcionar estas funcionalidades y conservar información localmente en el dispositivo.
+Este manual sirve como guía general para el uso de UniRoute y debe actualizarse conforme se incorporen o modifiquen las funcionalidades del proyecto.
