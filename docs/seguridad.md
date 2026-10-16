@@ -1,106 +1,143 @@
-# Políticas de Seguridad de la Aplicación Móvil
+# Políticas de Seguridad de la Aplicación UniRoute
 
 ## 1. Introducción
 
-PixelVault Store es un proyecto académico desarrollado con React Native y JavaScript.
+**UniRoute** es un proyecto orientado a facilitar la consulta de rutas y la navegación de los usuarios. La seguridad es un aspecto importante durante su desarrollo, instalación y utilización, ya que permite reducir los riesgos relacionados con el acceso, el tratamiento y la exposición de información.
 
-La aplicación utiliza almacenamiento local mediante AsyncStorage para conservar información relacionada con usuarios, sesión y compras.
+Este documento establece consideraciones y recomendaciones generales para proteger la aplicación. Las medidas implementadas deben verificarse en el código fuente antes de presentarlas como características existentes.
 
-## 2. Almacenamiento local
+## 2. Protección de la Información
 
-PixelVault utiliza AsyncStorage para guardar información en el dispositivo.
+La aplicación debe gestionar la información de acuerdo con las funciones que realmente ofrece y los datos que necesita para funcionar.
 
-Las principales claves utilizadas son:
+Se recomienda:
 
-- `@pixelvault_sesion`
-- `@pixelvault_usuarios`
-- `@pixelvault_compras`
+- Solicitar únicamente los datos necesarios para utilizar las funciones disponibles.
+- Evitar almacenar información personal innecesaria.
+- Comprobar cómo se guarda y se recupera la información.
+- Evitar que datos confidenciales aparezcan en mensajes de error o registros de depuración.
+- Proteger la información transmitida a servicios externos, cuando corresponda.
 
-La clave `@pixelvault_sesion` permite conservar la sesión activa del usuario.
+El mecanismo de almacenamiento utilizado por UniRoute debe identificarse mediante la revisión de su código y configuración.
 
-La información de los usuarios y las compras también se mantiene localmente para permitir el funcionamiento de la aplicación después de cerrarla.
+## 3. Autenticación y Control de Acceso
 
-## 3. Autenticación
+Si UniRoute incorpora funciones de registro o inicio de sesión, se deben verificar las medidas utilizadas para proteger las cuentas.
 
-La aplicación cuenta con:
+Entre las buenas prácticas recomendadas se encuentran:
 
-- Registro de usuarios.
-- Inicio de sesión.
-- Cierre de sesión.
-- Recuperación de contraseña.
-- Validación de credenciales.
+- Validar las credenciales antes de conceder acceso.
+- Evitar almacenar contraseñas en texto sin protección.
+- Utilizar mecanismos seguros de autenticación.
+- Proteger las sesiones y permitir su cierre cuando corresponda.
+- Evitar que un usuario acceda a información privada de otro usuario.
+- Gestionar de manera segura la recuperación de cuentas, si esta función existe.
 
-Durante el inicio de sesión se comprueba que el correo y la contraseña coincidan con una cuenta registrada.
+**Nota:** No se debe afirmar que UniRoute dispone de registro, inicio de sesión o recuperación de contraseña hasta confirmar que estas funciones están implementadas.
 
-## 4. Validaciones
+## 4. Validación de Datos
 
-PixelVault realiza diferentes validaciones antes de ejecutar determinadas operaciones.
+La validación permite reducir errores y evitar que información incorrecta provoque comportamientos inesperados.
 
-Entre ellas:
+Se recomienda comprobar:
 
-- Verificación de credenciales durante el inicio de sesión.
-- Verificación de correos registrados.
-- Comprobación de coincidencia de contraseñas durante la recuperación.
-- Verificación de disponibilidad de productos.
-- Validación de los datos utilizados en el pago simulado.
-- Validación de longitud de tarjeta y CVV.
+- Que los campos obligatorios estén completos.
+- Que los datos ingresados tengan el formato esperado.
+- Que las ubicaciones seleccionadas sean válidas para la consulta.
+- Que las solicitudes recibidas por los servicios sean revisadas antes de procesarse.
+- Que los errores se comuniquen de manera clara sin exponer información sensible.
 
-## 5. Protección de la sesión
+Las validaciones deben realizarse en los componentes correspondientes y, si existe un servidor, también deben verificarse los datos recibidos por este.
 
-Cuando un usuario inicia sesión correctamente, su correo electrónico se almacena utilizando la clave:
+## 5. Protección de Ubicaciones y Datos Personales
 
-`@pixelvault_sesion`
+Debido a que UniRoute está orientado a la consulta de rutas, es importante revisar si la aplicación utiliza ubicaciones o solicita permisos relacionados con la localización.
 
-Al abrir nuevamente la aplicación, se comprueba la información almacenada para determinar si existe una sesión válida.
+Cuando corresponda, se recomienda:
 
-Al cerrar sesión, se elimina la sesión activa.
+- Solicitar permisos de ubicación únicamente cuando sean necesarios.
+- Explicar al usuario la finalidad de los permisos solicitados.
+- Permitir el uso de ubicaciones introducidas manualmente cuando la aplicación lo admita.
+- Evitar almacenar o compartir ubicaciones sin una finalidad justificada.
+- No exponer ubicaciones personales en registros, capturas o documentación pública.
+- Revisar los servicios externos a los que se envían datos de ubicación.
 
-## 6. Seguridad del proceso de pago
+El uso de GPS, la ubicación en tiempo real y el historial de recorridos deben documentarse únicamente si están disponibles en la versión actual de UniRoute.
 
-El proceso de pago de PixelVault es únicamente una simulación.
+## 6. Seguridad de las Comunicaciones
 
-La aplicación no se conecta con:
+Si UniRoute se comunica con servicios externos o una API, se recomienda:
 
-- Bancos.
-- Plataformas financieras.
-- Pasarelas de pago reales.
-- Servicios externos de procesamiento de tarjetas.
+- Utilizar HTTPS para proteger la información transmitida.
+- Verificar la configuración de las solicitudes realizadas por la aplicación.
+- No incluir contraseñas, tokens ni claves privadas directamente en el código público.
+- Mantener las credenciales fuera de los repositorios públicos.
+- Gestionar los errores de conexión sin mostrar datos confidenciales.
+- Revisar los permisos y accesos de los servicios integrados.
 
-Por esta razón, no deben utilizarse datos reales de tarjetas dentro de la aplicación.
+Si la aplicación funciona sin servicios externos, esta sección deberá ajustarse a su arquitectura real.
 
-## 7. Limitaciones actuales de seguridad
+## 7. Gestión de Permisos
 
-PixelVault es un proyecto académico y actualmente utiliza almacenamiento local.
+Los permisos de la aplicación deben corresponder a las funciones que realmente necesita.
 
-Las cuentas se almacenan mediante AsyncStorage y las contraseñas no cuentan actualmente con un sistema de hashing o cifrado mediante un servidor.
+Se recomienda:
 
-Además, no existe un sistema de autenticación conectado a un backend.
+- Revisar los permisos declarados en la configuración.
+- Solicitar únicamente los permisos necesarios.
+- Informar al usuario cuando se requiera acceso a una función del dispositivo.
+- Gestionar correctamente los permisos denegados.
+- Evitar solicitar acceso innecesario a la ubicación, archivos u otros recursos.
 
-## 8. Mejoras de seguridad futuras
+Los permisos específicos de UniRoute deben comprobarse en la configuración de la aplicación.
 
-Para una versión futura podrían implementarse:
+## 8. Limitaciones y Verificación de la Seguridad
 
-- Backend para gestionar la autenticación.
-- Base de datos en la nube.
-- Hashing seguro de contraseñas.
-- Almacenamiento seguro de credenciales.
-- Autenticación más robusta.
-- Gestión segura de sesiones.
-- Integración con una pasarela de pago real.
-- Protección de información sensible.
+Las medidas de seguridad disponibles dependen de la implementación actual de UniRoute.
 
-## 9. Recomendaciones
+Para identificar posibles riesgos, es necesario comprobar:
 
-Mientras PixelVault se mantenga como proyecto académico:
+- El mecanismo de almacenamiento de datos.
+- La existencia de autenticación y control de acceso, si corresponde.
+- El tratamiento de la información personal.
+- Los permisos solicitados por la aplicación.
+- El uso de conexiones seguras con servicios externos.
+- La presencia de credenciales o información confidencial en el código.
+- La gestión de errores y los registros de depuración.
 
-- No utilizar contraseñas reales.
-- No introducir números reales de tarjetas.
-- No utilizar información bancaria real.
-- Mantener la aplicación como una demostración académica.
-- No considerar el sistema actual como una plataforma de comercio electrónico real.
+No se debe considerar que la aplicación está protegida únicamente porque funciona correctamente. La seguridad debe revisarse mediante pruebas y análisis de la implementación.
 
-## 10. Conclusión
+## 9. Mejoras de Seguridad Futuras
 
-PixelVault incorpora validaciones, control de sesión y almacenamiento local para permitir el funcionamiento de sus principales características.
+Según las necesidades identificadas durante la revisión técnica, se pueden considerar las siguientes mejoras:
 
-Sin embargo, debido a que se trata de un proyecto académico basado en almacenamiento local, existen limitaciones de seguridad que deberán solucionarse mediante un backend, autenticación segura y almacenamiento protegido en futuras versiones.
+- Incorporar autenticación segura si el proyecto necesita cuentas de usuario.
+- Utilizar mecanismos adecuados para proteger las credenciales.
+- Aplicar controles de acceso cuando se manejen datos privados.
+- Proteger los datos almacenados localmente.
+- Utilizar comunicaciones cifradas con los servicios externos.
+- Minimizar la recopilación y conservación de datos personales.
+- Revisar periódicamente las dependencias utilizadas.
+- Realizar pruebas de seguridad antes de publicar nuevas versiones.
+- Documentar los permisos, riesgos y medidas de mitigación.
+
+Estas mejoras deben priorizarse de acuerdo con la arquitectura y las necesidades reales de UniRoute.
+
+## 10. Recomendaciones para el Desarrollo y las Pruebas
+
+Durante el desarrollo y las pruebas de UniRoute se recomienda:
+
+- Utilizar datos de prueba siempre que sea posible.
+- No publicar contraseñas, tokens ni claves privadas.
+- Evitar incluir información personal en capturas de pantalla.
+- Revisar los cambios antes de publicarlos en el repositorio.
+- Mantener actualizadas las dependencias del proyecto.
+- Comprobar los permisos y las conexiones utilizadas.
+- Informar y corregir los problemas de seguridad detectados.
+- Verificar que la documentación coincida con el funcionamiento real de la aplicación.
+
+## 11. Conclusión
+
+La seguridad de UniRoute debe formar parte de todo el proceso de desarrollo y mantenimiento. La protección de la información, la validación de datos, la gestión adecuada de permisos y el uso seguro de los servicios son aspectos importantes para reducir riesgos.
+
+Este documento establece recomendaciones generales que deben contrastarse con el código fuente y la configuración del proyecto. Conforme evolucione UniRoute, sus políticas de seguridad deberán actualizarse para reflejar las medidas implementadas y las mejoras pendientes.
