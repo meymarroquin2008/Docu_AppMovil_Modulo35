@@ -15,6 +15,6 @@ nav:
   - Guía de Usuario:
       - Manual de Usuario: manual_usuario_ux.md
       - Preguntas Frecuentes: faq.md
- - Videotutorial:
+ docs: ajustar navegación y conservar la ruta del videotutorial - Videotutorial:
       - Video del proyecto: video/videotutorial_proyecto.mp4
 
