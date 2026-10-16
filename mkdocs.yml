@@ -16,5 +16,5 @@ nav:
       - Manual de Usuario: manual_usuario_ux.md
       - Preguntas Frecuentes: faq.md
   - Videotutorial:
-      - Video del proyecto: video/videotutorial_proyecto.mp4
+      - Guía Visual: video/index.md
 
