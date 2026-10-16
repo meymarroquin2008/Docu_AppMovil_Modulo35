@@ -1,6 +1,6 @@
 
-site_name: Portal Oficial de Documentación
-site_description: Manuales técnicos, guías de instalación y arquitectura del sistema.
+site_name: Portal Oficial de Documentación UniRoute
+site_description: Documentación técnica, arquitectura, instalación y guía de usuario de UniRoute.
 site_author: Estudiantes de 3ro Software - Complejo Educativo Delgado
 
 theme:
@@ -9,12 +9,21 @@ theme:
 
 nav:
   - Inicio: index.md
-  - Manuales Técnicos:
+
+  - Arquitectura y Diseño:
+      - Arquitectura del Sistema: arquitectura.md
       - Arquitectura y Despliegue: arquitectura_despliegue.md
+      - Casos de Uso: casos_de_uso.md
+      - Diagrama de Secuencia: secuencia.md
+
+  - Manuales Técnicos:
       - Guía de Instalación: instalacion_movil.md
+      - API y Endpoints: api_endpoints.md
+      - Seguridad: seguridad.md
+
   - Guía de Usuario:
       - Manual de Usuario: manual_usuario_ux.md
       - Preguntas Frecuentes: faq.md
+
   - Videotutorial:
       - Guía Visual: video/index.md
-
