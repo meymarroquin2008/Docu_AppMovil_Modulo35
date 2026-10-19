@@ -1,4 +1,3 @@
-
 ---
 name: Reporte de Error (Bug Report)
 about: Crea un reporte para ayudarnos a corregir un fallo o enlace roto en la documentación.
