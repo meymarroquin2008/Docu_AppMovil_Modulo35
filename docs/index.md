@@ -153,4 +153,22 @@ La organización de los manuales, las preguntas frecuentes y los recursos visual
 
 Te invitamos a explorar las diferentes secciones del portal y utilizar los materiales disponibles para conocer mejor UniRoute.
 
+## 12. Licencia y reporte de errores
+
+### Licencia del proyecto
+
+UniRoute se distribuye bajo los términos de la Licencia MIT. Esta licencia permite utilizar, copiar, modificar y distribuir el software de acuerdo con sus condiciones.
+
+Puedes consultar el texto completo de la licencia en el repositorio del proyecto:
+
+[Consultar la Licencia MIT](https://github.com/meymarroquin2008/Docu_AppMovil_Modulo35/blob/main/LICENSE)
+
+### Reportar un error
+
+Si encuentras un enlace roto, un problema de visualización o información que necesite corregirse en este portal, puedes informar al equipo de UniRoute mediante GitHub.
+
+[Reportar un error en la documentación](https://github.com/meymarroquin2008/Docu_AppMovil_Modulo35/issues/new)
+
+Al crear un reporte, describe el problema, indica la sección afectada y proporciona los pasos para reproducirlo cuando sea posible.
+
 **¡Gracias por visitar el portal de documentación de UniRoute!**
