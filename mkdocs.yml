@@ -27,3 +27,7 @@ nav:
 
   - Videotutorial:
       - Guía Visual: video/index.md
+      
+  - Licencia y Gobernanza:
+      - Licencia MIT: licencia.md
+      - Guía de Contribución: contribucion.md
