@@ -53,6 +53,11 @@ UniRoute es un proyecto académico. Sus funcionalidades y limitaciones deben des
 
 La disponibilidad de rutas, la precisión de los resultados y el acceso a servicios externos dependen de las fuentes de información y de las funciones que realmente estén integradas en la aplicación.
 
+## Licencia y Gobernanza
+
+- Este proyecto se distribuye bajo los términos de la **[Licencia MIT](LICENSE)**.
+- Consulta nuestra **[Guía de Contribución](CONTRIBUTING.md)** para reportar fallos o proponer mejoras.
+
 ## Versión
 
 **v1.0.0**
